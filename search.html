@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Search Results</title>
+    <style>
+      li {
+        display: inline-block;
+        position: relative;
+        color: #0087ca;
+      }
+
+      li::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: rgb(66, 35, 206);
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+      li:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <dh-component>
+      <!--   more free components available at www.TailwindUIKit.com -->
+      <nav class="w-full border-b bg-gray-100">
+        <div
+          class="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between bg-gray-100"
+        >
+          <div aria-label="Home. logo" role="img">
+            <img
+              class="w-12 md:w-auto"
+              src="https://tuk-cdn.s3.amazonaws.com/can-uploader/centre_aligned_simple-Svg1.svg"
+              alt="logo"
+            />
+            <h1
+              class="text-xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl text-center text-gray-800 font-black leading-7 ml-3 md:leading-10"
+            >
+              Dream <span class="text-indigo-700">Job</span>
+            </h1>
+          </div>
+          <div>
+            <button
+              onclick="toggleMenu(true)"
+              class="sm:block md:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            >
+              <svg
+                aria-haspopup="true"
+                aria-label="open Main Menu"
+                xmlns="http://www.w3.org/2000/svg"
+                class="md:hidden icon icon-tabler icon-tabler-menu"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                stroke-linecap="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z"></path>
+                <line x1="4" y1="8" x2="20" y2="8"></line>
+                <line x1="4" y1="16" x2="20" y2="16"></line>
+              </svg>
+            </button>
+            <div id="menu" class="md:block lg:block hidden">
+              <button
+                onclick="toggleMenu(false)"
+                class="block md:hidden lg:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 fixed focus:outline-none focus:ring-2 focus:ring-gray-500 z-30 top-0 mt-6"
+              >
+                <svg
+                  aria-label="close main menu"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#2c3e50"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" />
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+              <ul
+                class="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20"
+              >
+                <li
+                  class="text-gray-700 hover:text-gray-900 cursor-pointer text-base lg:text-lg pt-10 md:pt-0"
+                >
+                  <a href="index.html">Home</a>
+                </li>
+                <li
+                  class="text-gray-700 hover:text-gray-900 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10"
+                >
+                  <a href="contact.html">Contact</a>
+                </li>
+                <li
+                  class="text-gray-700 hover:text-gray-900 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10"
+                >
+                  <a href="feature.html">Features</a>
+                </li>
+                <li
+                  class="text-gray-700 hover:text-gray-900 cursor-pointer text-base lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10"
+                >
+                  <a href="about.html ">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button
+            class="focus:outline-none lg:text-lg lg:font-bold focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 hidden md:block bg-transparent transition duration-150 ease-in-out hover:bg-gray-200 rounded border border-indigo-700 text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm"
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
+      <div class="bg-gray-100">
+        <div
+          class="container mx-auto flex flex-col items-center py-12 sm:py-24"
+        >
+          <div
+            class="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col mb-5 sm:mb-10"
+          >
+            <h1
+              class="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-3xl text-center text-gray-800 font-black leading-7 md:leading-10"
+            >
+              Job Search
+              <span class="text-indigo-700">Results</span>
+            </h1>
+          </div>
+          <form
+            id="search-form"
+            class="w-11/12 sm:w-2/3 lg:flex justify-center items-center mb-5 sm:mb-10"
+          >
+            <div
+              class="w-11/12 sm:w-2/3 lg:flex justify-center items-center mb-5 sm:mb-10"
+            >
+              <input
+                class="bg-gray-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
+                input
+                type="text"
+                id="search-input"
+                placeholder="Search Job"
+              />
+              <button
+                class="w-32 rounded-l-none hover:bg-indigo-600 bg-indigo-700 rounded text-base font-medium leading-none text-white p-5 uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+        <table border="2">
+          <div
+            id="job-results"
+            class="text-white text-4xl table-auto text-center bg-indigo-700 text-[22px] before:content-['Festivus]"
+          ></div>
+        </table>
+      </div>
+      <hr />
+
+      <footer class="bg-neutral-300 p-8 text-slate-500 mx-auto">
+        <section class="mb-6 flex lg:grid lg:grid-cols-12 flex-col lg:flex-row">
+          <div
+            class="flex flex-col items-center lg:items-start lg:mr-10 col-span-4 mb-4"
+          >
+            <a href="#" class="block mb-4 w-10 h-10">
+              <img
+                class="block w-full h-full"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                alt="Workflow"
+              />
+            </a>
+
+            <p class="mb-4 text-center md:text-center lg:text-left">
+              Making the world a better by providing <br />
+              <span class="text-indigo-700 text-4xl text-center"> Jobs</span>.
+            </p>
+          </div>
+
+          <div class="hidden md:block w-full lg:col-span-8">
+            <ul class="flex justify-between">
+              <li>
+                <h5 class="text-indigo-700 mb-3">Home</h5>
+              </li>
+
+              <li>
+                <h5 class="text-indigo-700 mb-6">SUPPORT</h5>
+              </li>
+
+              <li>
+                <h5 class="text-indigo-700 mb-3">Feature</h5>
+              </li>
+
+              <li>
+                <h5 class="text-indigo-700 mb-3">About</h5>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="mb-4" />
+
+        <h6 class="text-center">© 2023 Made with ❤️ by @sarthak2131</h6>
+      </footer>
+    </dh-component>
+
+    <script src="script.js"></script>
+  </body>
+</html>
